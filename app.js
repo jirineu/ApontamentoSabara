@@ -986,7 +986,7 @@ async function atualizarDadosDaPlanilha() {
         botao.disabled = true;
 
         // URL gerada na implantação do seu Google Apps Script
-        const urlWebApp = "https://script.google.com/macros/s/AKfycbw36Zv_IdusCQWqMsqswymxSNQ5NjDULUQ_KebVRonzRTPR7Z6rDTtXqwfRodRc6guMPg/exec"; 
+        const urlWebApp = "https://script.google.com/macros/s/AKfycbxyGYBv-kXH3hsLJQtluGi6fbmgkpV8GYwLfSpJ-0jhbXG47BCzj8ZUZHB4jw_TH9hw/exec"; 
         
         const resposta = await fetch(urlWebApp);
         const dados = await resposta.json();

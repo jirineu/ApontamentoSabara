@@ -1,0 +1,314 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f2f2f2;
+    color:#222;
+}
+
+.topo{
+    background:#0f5c7a;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+main{
+    padding:15px;
+    padding-bottom:100px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:15px;
+    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+h2{
+    margin-bottom:15px;
+    color:#0f5c7a;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input,
+select{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    margin-bottom:10px;
+}
+
+button{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:12px;
+    background:#0f5c7a;
+    color:white;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.menu{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:white;
+    display:none; /* Alterado aqui: começa invisível para bloquear navegação antes do login */
+    border-top:1px solid #ddd;
+}
+
+.menu button{
+    border-radius:0;
+    margin:0;
+    background:white;
+    color:#0f5c7a;
+}
+
+.aba{
+    display:none;
+}
+
+.aba.ativa{
+    display:block;
+}
+
+.funcionario{
+    background:#f8f8f8;
+    border-radius:15px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.funcionario.vermelho{
+    border-left:8px solid red;
+}
+
+.funcionario.verde{
+    border-left:8px solid green;
+}
+
+.botoes{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.btn-editar{
+    background:#f39c12;
+}
+
+.btn-ponto{
+    background:green;
+}
+
+.historico-item{
+    background:#fafafa;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+#gradeArmarios{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.armario{
+    height:70px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:bold;
+}
+
+.armario.livre{
+    background:green;
+}
+
+.armario.ocupado{
+    background:#0f5c7a;
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-conteudo{
+    width:90%;
+    max-width:400px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+}
+
+@media(max-width:500px){
+
+    #gradeArmarios{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+/* Cor padrão para quem não iniciou o dia */
+.funcionario.vermelho {
+    border-left: 8px solid #ff4d4d;
+    background-color: #ffe6e6;
+}
+
+/* Cor de início do dia (até 3h) e durante o almoço */
+.funcionario.verde {
+    border-left: 8px solid #2ecc71;
+    background-color: #e8f8f0;
+}
+
+/* Cor após 3h da entrada e no retorno do almoço */
+.funcionario.laranja {
+    border-left: 8px solid #e67e22;
+    background-color: #fdf2e9;
+}
+
+/* Cor após finalizar o expediente */
+.funcionario.azul {
+    border-left: 8px solid #3498db;
+    background-color: #ebf5fb;
+}
+
+/* ==========================================================================
+   ABA FOOD (ALIMENTAÇÃO)
+   ========================================================================== */
+
+/* Container principal da seção */
+.secao-aba-food {
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho da aba (Título e Botão Gerar) */
+.food-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.food-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.4rem;
+}
+
+.btn-gerar-food {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-gerar-food:hover {
+    background-color: #27ae60;
+}
+
+/* Container da lista de funcionários */
+#conteudoListaFood {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Card de cada funcionário na lista */
+.food-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #ffffff;
+    border-left: 5px solid #3498db;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.food-info strong {
+    display: block;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.food-info span {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+}
+
+/* Botão de Excluir individual */
+.btn-excluir-food {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-excluir-food:hover {
+    background-color: #c0392b;
+}
+
+/* Texto informativo de lista vazia */
+.food-vazio {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+/* Card de resultado da soma total no rodapé */
+.resultado-soma-food {
+    padding: 15px;
+    background-color: #34495e;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.resultado-soma-food span {
+    color: #2ecc71;
+    font-size: 1.3rem;
+    margin-left: 5px;
+}

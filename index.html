@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bruna Construções</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<div class="app">
+    
+
+    <!-- TOPO -->
+
+    <header class="topo">
+        <h1>Bruna Construções</h1>
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main>
+<section id="aba-login" class="aba ativa" style="max-width: 400px; margin: 40px auto; padding: 10px;">
+            <div class="card">
+                <h2>Acesso ao Sistema</h2>
+                
+                <label for="login-usuario">Usuário / Nome</label>
+                <input type="text" id="login-usuario" placeholder="Digite seu usuário">
+
+                <label for="login-senha">Senha</label>
+                <input type="password" id="login-senha" placeholder="Digite sua senha">
+
+                <button onclick="executarLogin()">Entrar</button>
+                
+                <p id="mensagem-erro" style="color: #e74c3c; text-align: center; margin-top: 12px; font-weight: bold; display: none;"></p>
+            </div>
+        </section>
+        <!-- ========================= -->
+        <!-- ABA ESTOQUE -->
+        <!-- ========================= -->
+
+        <section id="aba-estoque" class="aba" style="display: none;">
+
+            <div class="card">
+
+                <h2>Registrar Saída</h2>
+
+                <label>Material</label>
+                <input type="text" id="material">
+
+                <label>Quantidade</label>
+                <input type="number" id="quantidade">
+
+                <label>Funcionário</label>
+                <input type="text" id="funcionario">
+
+                <button onclick="registrarSaida()">
+                    Registrar
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Histórico</h2>
+
+                <div id="historico"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- ABA PONTO -->
+        <!-- ========================= -->
+
+ <section id="aba-ponto" class="aba">
+
+            <div class="card">
+
+                <h2>Adicionar Funcionário</h2>
+
+                <label>Nome</label>
+                <input type="text" id="nomeFuncionario">
+
+                <label>Função</label>
+                <input type="text" id="funcaoFuncionario">
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label>Horário Entrada</label>
+                        <input type="number" id="entradaFuncionario" min="0" max="23" placeholder="Ex: 8">
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Horário Saída</label>
+                        <input type="number" id="saidaFuncionario" min="0" max="23" placeholder="Ex: 17">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label>Alojamento</label>
+                        <select id="alojamentoFuncionario">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>VR (Vale Refeição)</label>
+                        <select id="vrFuncionario">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="salvarFuncionario()">
+                    Salvar Funcionário
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <input
+                    type="text"
+                    id="filtroFuncionario"
+                    placeholder="Buscar funcionário..."
+                    onkeyup="filtrarFuncionarios()"
+                >
+
+            </div>
+
+            <div class="card">
+
+                <h2>Funcionários</h2>
+
+                <div id="indicadorAtivosLocal" style="background: #e8f8f0; padding: 14px; border-radius: 12px; margin-bottom: 15px; border-left: 5px solid #2ecc71; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #0f5c7a;">
+        <span>Total de Funcionários</span>
+        <span id="qtdAtivosPlanilha" style="font-size: 1.25rem; color: green; background: white; padding: 2px 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">0</span>
+    </div>
+
+                <div id="listaFuncionarios"></div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="topo-historico" style="display: flex; justify-content: space-between; align-items: center;">
+
+                    <div>
+                        <h2>Histórico de Pontos</h2>
+                        <p id="dataAtual">Mostrando tudo</p>
+                    </div>
+
+                    <div style="display: flex; gap: 5px;">
+                        <button 
+                            class="btn-filtro" 
+                            onclick="atualizarDadosDaPlanilha()" 
+                            style="margin: 0; padding: 10px; width: auto;"
+                            title="Sincronizar com a planilha"
+                        >
+                            🔄
+                        </button>
+
+                        <button
+                            class="btn-filtro"
+                            onclick="abrirFiltroPonto()"
+                            style="margin: 0; padding: 10px; width: auto;"
+                        >
+                            🔍
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="historicoPontos"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+        <!-- ABA ARMÁRIOS -->
+        <!-- ========================= -->
+
+        <section id="aba-armarios" class="aba">
+
+            <div class="card">
+
+                <h2>Armários</h2>
+
+                <div id="gradeArmarios"></div>
+
+            </div>
+
+        </section>
+   <section id="aba-food" class="aba secao-aba secao-aba-food" style="display: none;">
+
+    <div class="food-header">
+        <h2>Lista Food (Sem VR)</h2>
+        <button class="btn-gerar-food" onclick="gerarListaFood()">🔄 Gerar Lista</button>
+    </div>
+
+    <div id="conteudoListaFood">
+        <p class="food-vazio">Clique em "Gerar Lista" para carregar os dados de hoje.</p>
+    </div>
+
+    <div id="resultadoSomaFood" class="resultado-soma-food" style="display: none;">
+        Total de Refeições: <span id="totalRefeicoes">0</span>
+    </div>
+
+</section>
+
+    </main>
+
+    <!-- MENU INFERIOR -->
+
+   <nav class="menu">
+
+    <button onclick="abrirAba('estoque')">
+        Estoque
+    </button>
+
+    <button onclick="abrirAba('ponto')">
+        Ponto
+    </button>
+
+    <button onclick="abrirAba('armarios')">
+        Armários
+    </button>
+
+    <button onclick="abrirAba('food')">
+        🍔 Food
+    </button>
+
+</nav>
+
+</div>
+
+<!-- POPUP ARMÁRIO -->
+
+<div id="popupArmario" class="popup">
+
+    <div class="popup-conteudo">
+
+        <h2>Armário</h2>
+
+        <p id="infoArmario"></p>
+
+        <select id="selectFuncionario"></select>
+
+        <button onclick="vincularArmario()">
+            Salvar
+        </button>
+
+        <button onclick="fecharPopup()">
+            Fechar
+        </button>
+
+    </div>
+
+</div>
+<!-- POPUP FILTRO PONTO -->
+
+<div id="popupFiltroPonto" class="popup">
+
+    <div class="popup-conteudo">
+
+        <h2>Filtrar Data</h2>
+
+        <input
+            type="date"
+            id="filtroPonto"
+        >
+
+        <button onclick="aplicarFiltroPonto()">
+            Filtrar
+        </button>
+
+        <button onclick="limparFiltroPonto()">
+            Hoje
+        </button>
+
+        <button onclick="fecharFiltroPonto()">
+            Fechar
+        </button>
+
+    </div>
+
+</div>
+<script src="app.js"></script>
+
+</body>
+</html>

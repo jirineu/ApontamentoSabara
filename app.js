@@ -1,7 +1,7 @@
 // ==========================================
 // 1. CONFIGURAÇÕES E VARIÁVEIS GLOBAIS
 // ==========================================
-const urlWebApp = "https://script.google.com/macros/s/AKfycbw36Zv_IdusCQWqMsqswymxSNQ5NjDULUQ_KebVRonzRTPR7Z6rDTtXqwfRodRc6guMPg/exec";
+const urlWebApp = "https://script.google.com/macros/s/AKfycbxyGYBv-kXH3hsLJQtluGi6fbmgkpV8GYwLfSpJ-0jhbXG47BCzj8ZUZHB4jw_TH9hw/exec";
 let timeoutLogin = null;
 let timeoutSalvar = null;
 
